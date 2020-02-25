@@ -20,6 +20,10 @@ public:
   void avail();
   void avail_pointer();
   void position(int i);
+  void onlycomments()
+  {
+      cout<<"for usage of this (YOLO)";
+  }
 }bus[10],*op;
 void vline(char ch)
 {
@@ -226,10 +230,9 @@ void a::avail()
 }
 void a::avail_pointer()
 {
-    cout<<"Bus no: \t"<<op->busn<<"\nDriver: \t"<<op->driver
-    <<"\t\tArrival time: \t"<<op->arrival<<"\tDeparture Time: \t"
-    <<op->depart<<"\nFrom: \t\t"<<op->
-    from<<"\t\tTo: \t\t\t"
+    cout<<"Bus no: \t"<<this->busn<<"\nDriver: \t"<<this->driver
+    <<"\t\tArrival time: \t"<<this->arrival<<"\tDeparture Time: \t"
+    <<this->depart<<"\nFrom: \t\t"<<this->from<<"\t\tTo: \t\t\t"
     <<op->to<<"\n";
     vline('*');
     vline('_');
