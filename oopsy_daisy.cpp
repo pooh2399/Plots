@@ -4,18 +4,23 @@
 #include <string.h>
 #include <cstdlib>
 using namespace std;
+int trippy;
 static int p = 0;
 class a
 {
   char busn[5], driver[10], arrival[5], depart[5], from[10], to[10], seat[8][4][10];
 public:
  void install();
+ void install_pointer();
   void allotment();
+  void allotment_pointer();
   void empty();
+  void empty_pointer();
   void show();
   void avail();
+  void avail_pointer();
   void position(int i);
-}bus[10];
+}bus[10],*op;
 void vline(char ch)
 {
   for (int i=80;i>0;i--)
@@ -71,7 +76,6 @@ void a::allotment_pointer()
       {
         cout<<"Enter passanger's name: ";
         cin>>op->seat[seat/4][(seat%4)-1];
-        break;
       }
     else
       cout<<"The seat no. is already reserved.\n";
@@ -220,44 +224,13 @@ void a::avail()
     vline('_');
   }
 }
-void a::position(int l)
-{
-  int s=0;p=0;
-  for (int i =0; i<8;i++)
-  {
-    cout<<"\n";
-    for (int j = 0;j<4; j++)
-    {
-      s++;
-      if(strcmp(bus[l].seat[i][j], "Empty")==0)
-        {
-          cout.width(5);
-          cout.fill(' ');
-          cout<<s<<".";
-          cout.width(10);
-          cout.fill(' ');
-          cout<<bus[l].seat[i][j];
-          p++;
-        }
-        else
-        {
-        cout.width(5);
-        cout.fill(' ');
-        cout<<s<<".";
-        cout.width(10);
-        cout.fill(' ');
-        cout<<bus[l].seat[i][j];
-        }
-      }
-    }
-  cout<<"\n\nThere are "<<p<<" seats empty in Bus No: "<<bus[l].busn;
-  }
 void a::avail_pointer()
 {
-    cout<<"Bus no: \t"<<bus[n].busn<<"\nDriver: \t"<<bus[n].driver
-    <<"\t\tArrival time: \t"<<bus[n].arrival<<"\tDeparture Time: \t"
-    <<bus[n].depart<<"\nFrom: \t\t"<<bus[n].from<<"\t\tTo: \t\t\t"
-    <<bus[n].to<<"\n";
+    cout<<"Bus no: \t"<<op->busn<<"\nDriver: \t"<<op->driver
+    <<"\t\tArrival time: \t"<<op->arrival<<"\tDeparture Time: \t"
+    <<op->depart<<"\nFrom: \t\t"<<op->
+    from<<"\t\tTo: \t\t\t"
+    <<op->to<<"\n";
     vline('*');
     vline('_');
 }
@@ -269,11 +242,15 @@ while(1)
 {
     //system("cls");
   cout<<"\n\n\n\n\n";
-  cout<<"\t\t\t1.Install\n\t\t\t"
-  <<"2.Reservation\n\t\t\t"
-  <<"3.Show\n\t\t\t"
-  <<"4.Buses Available. \n\t\t\t"
-  <<"5.Exit";
+  cout<<"\t\t\t1.Install\n\t\t\t";
+  cout<<"2.Reservation\n\t\t\t";
+  cout<<"3.Show\n\t\t\t";
+  cout<<"4.Buses Available. \n\t\t\t";
+  cout<<"5.Exit";
+  cout<<"You wanna be special(1=yes,0=no)";
+  cin>>trippy;
+  if(trippy==0)
+  {
   cout<<"\n\t\t\tEnter your choice:-> ";
   cin>>w;
   switch(w)
@@ -288,6 +265,25 @@ while(1)
       break;
     case 5:  exit(0);
   }
+  }
+  else
+  {
+   cout<<"\n\t\t\tEnter your choice:-> ";
+  cin>>w;
+  switch(w)
+  {
+    case 1:  op->install_pointer();
+      break;
+    case 2:  op->allotment_pointer();
+      break;
+    case 3:  op->show();
+      break;
+    case 4:  op->avail_pointer();
+      break;
+    case 5:  exit(0);
+  }
+  }
 }
 return 0;
 }
+
