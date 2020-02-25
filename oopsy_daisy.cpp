@@ -283,6 +283,8 @@ while(1)
     case 5:  exit(0);
   }
   }
+  a *trial=new a;
+  delete trial;
 }
 return 0;
 }
