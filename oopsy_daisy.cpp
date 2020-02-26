@@ -24,7 +24,8 @@ public:
   {
       cout<<"for usage of this (YOLO)";
   }
-}bus[10],*op;
+}bus[10];
+a *op=new a;
 void vline(char ch)
 {
   for (int i=80;i>0;i--)
@@ -224,8 +225,6 @@ void a::avail()
     <<"\t\tArrival time: \t"<<bus[n].arrival<<"\tDeparture Time: \t"
     <<bus[n].depart<<"\nFrom: \t\t"<<bus[n].from<<"\t\tTo: \t\t\t"
     <<bus[n].to<<"\n";
-    vline('*');
-    vline('_');
   }
 }
 void a::avail_pointer()
@@ -250,7 +249,6 @@ while(1)
   cout<<"3.Show\n\t\t\t";
   cout<<"4.Buses Available. \n\t\t\t";
   cout<<"5.Exit";
-  cout<<"You wanna be special(1=yes,0=no)";
   cin>>trippy;
   if(trippy==0)
   {
